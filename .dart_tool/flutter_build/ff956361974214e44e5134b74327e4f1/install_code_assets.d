@@ -1,0 +1,1 @@
+ /Users/jmanzini/Projects/greengrocer/.dart_tool/flutter_build/ff956361974214e44e5134b74327e4f1/native_assets.json: 
