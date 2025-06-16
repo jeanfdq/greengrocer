@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/config/custom_colors.dart';
-import 'package:greengrocer/utils/components/custom_button_login.dart';
+import 'package:greengrocer/utils/components/custom_button.dart';
 
 import 'package:greengrocer/utils/components/custom_text_field.dart';
 import 'package:greengrocer/utils/constants/constants.dart';
@@ -111,7 +111,7 @@ class SignUpScreen extends StatelessWidget {
                           ],
                         ),
 
-                        CustomButtonLogin(
+                        CustomButton(
                           buttonHeight: KUtils.kHeightButton,
                           backgroud: Colors.green,
                           label: "Cadastrar Usuário",

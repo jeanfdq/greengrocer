@@ -2,7 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:greengrocer/screens/base_screen.dart';
 import 'package:greengrocer/screens/sign_up_screen.dart';
-import 'package:greengrocer/utils/components/custom_button_login.dart';
+import 'package:greengrocer/utils/components/custom_button.dart';
 import 'package:greengrocer/utils/components/custom_text_field.dart';
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/utils/constants/constants.dart';
@@ -100,7 +100,7 @@ class SignInScreen extends StatelessWidget {
                     ),
 
                     // Botão de Login
-                    CustomButtonLogin(
+                    CustomButton(
                       buttonHeight: KUtils.kHeightButton,
                       backgroud: Colors.green,
                       label: "Login",
@@ -149,7 +149,7 @@ class SignInScreen extends StatelessWidget {
                     ),
 
                     // Botao de Criar Conta
-                    CustomButtonLogin(
+                    CustomButton(
                       buttonHeight: KUtils.kHeightButton,
                       backgroud: Colors.white,
                       label: "Criar conta",

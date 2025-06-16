@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:greengrocer/screens/sign_in_screen.dart';
-import 'package:greengrocer/utils/components/custom_button_login.dart';
+import 'package:greengrocer/utils/components/custom_button.dart';
 import 'package:greengrocer/utils/components/custom_text_field.dart';
 import 'package:greengrocer/utils/constants/constants.dart';
 import 'package:greengrocer/utils/utils.services.dart';
@@ -80,7 +80,7 @@ class PerfilTab extends StatelessWidget {
                 ),
 
                 // Botao de Atualizar Senha
-                CustomButtonLogin(
+                CustomButton(
                   buttonHeight: KUtils.kHeightButton,
                   backgroud: Colors.white.withAlpha(190),
                   label: "Atualizar a senha",

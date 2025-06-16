@@ -5,7 +5,7 @@ import 'package:greengrocer/config/app_data.dart' as AppData;
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/cart_item_model.dart';
 import 'package:greengrocer/screens/components/cart_item_tale.dart';
-import 'package:greengrocer/utils/components/custom_button_login.dart';
+import 'package:greengrocer/utils/components/custom_button.dart';
 import 'package:greengrocer/utils/constants/constants.dart';
 import 'package:greengrocer/utils/utils.services.dart';
 
@@ -102,7 +102,7 @@ class _CartTabState extends State<CartTab> {
                 ),
 
                 // Button concluir compra
-                CustomButtonLogin(
+                CustomButton(
                   buttonHeight: KUtils.kHeightButton,
                   backgroud: CustomColors.customSwatchColor,
                   label: "Concluir Pedido",
