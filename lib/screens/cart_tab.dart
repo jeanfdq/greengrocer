@@ -17,7 +17,7 @@ class CartTab extends StatefulWidget {
 }
 
 class _CartTabState extends State<CartTab> {
-  final utilServices = UtilsSevices();
+  final utilServices = UtilsServices();
 
   void removeItemFromCart(CartItemModel cartItem) {
     setState(() {

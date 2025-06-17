@@ -21,7 +21,7 @@ class CartItemTile extends StatefulWidget {
 }
 
 class _CartItemTileState extends State<CartItemTile> {
-  final utilsServices = UtilsSevices();
+  final utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {

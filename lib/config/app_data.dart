@@ -1,5 +1,10 @@
 import 'package:greengrocer/models/cart_item_model.dart';
+import 'package:greengrocer/models/order_model.dart';
 import 'package:greengrocer/models/product_item_model.dart';
+import 'package:greengrocer/models/user_model.dart';
+import 'package:greengrocer/utils/utils.services.dart';
+
+final utilsServices = UtilsServices();
 
 ProductItemModel apple = ProductItemModel(
   name: "Maçã",
@@ -52,7 +57,7 @@ ProductItemModel couveflor = ProductItemModel(
 ProductItemModel alface = ProductItemModel(
   name: "Alface",
   imageURL: "assets/products/alface.png",
-  unit: "Un",
+  unit: "un",
   descript: "Descrição da Alface",
   price: 6.2,
 );
@@ -60,7 +65,7 @@ ProductItemModel alface = ProductItemModel(
 ProductItemModel pimenta = ProductItemModel(
   name: "Alface",
   imageURL: "assets/products/pimenta.png",
-  unit: "Un",
+  unit: "un",
   descript: "Descrição da Pimenta",
   price: 3.13,
 );
@@ -111,4 +116,28 @@ List<CartItemModel> cartItems = [
   CartItemModel(item: alface, quantity: 2),
   CartItemModel(item: kiwi, quantity: 6),
   CartItemModel(item: couveflor, quantity: 1),
+];
+
+final user = UserModel(
+  id: utilsServices.getUUID(),
+  name: "João da Silva",
+  email: "joao@joao.com",
+  phone: "(11) 91234-5678",
+  cpf: "123.456.789-00",
+  password: "123456",
+);
+
+List<OrderModel> orders = [
+  OrderModel(
+    id: utilsServices.getRandomNumber().toString(),
+    createdOrder: DateTime.now(),
+    pixOverDue: DateTime.parse("2026-12-01 14:00"),
+    items: [
+      CartItemModel(item: apple, quantity: 2),
+      CartItemModel(item: pimenta, quantity: 5),
+    ],
+    status: "pending_payment",
+    pixCopyAndPaste: "pixCopyAndPaste",
+    total: 100,
+  ),
 ];

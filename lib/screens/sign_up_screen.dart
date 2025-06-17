@@ -9,7 +9,7 @@ import 'package:greengrocer/utils/utils.services.dart';
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
 
-  final utilsService = UtilsSevices();
+  final utilsService = UtilsServices();
 
   @override
   Widget build(BuildContext context) {

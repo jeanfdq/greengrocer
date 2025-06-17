@@ -46,7 +46,7 @@ class ProductItemTale extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: UtilsSevices().priceToCurrency(
+                          text: UtilsServices().priceToCurrency(
                             productItem.price,
                           ),
                           style: TextStyle(
