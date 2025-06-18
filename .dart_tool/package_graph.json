@@ -8,11 +8,13 @@
       "version": "1.0.0+1",
       "dependencies": [
         "adaptive_dialog",
+        "add_to_cart_animation",
         "animated_text_kit",
         "cupertino_icons",
         "flutter",
         "intl",
         "mask_text_input_formatter",
+        "qr_flutter",
         "uuid"
       ],
       "devDependencies": [
@@ -53,6 +55,21 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "add_to_cart_animation",
+      "version": "2.0.4",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "qr_flutter",
+      "version": "4.1.0",
+      "dependencies": [
+        "flutter",
+        "qr"
       ]
     },
     {
@@ -280,6 +297,13 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "qr",
+      "version": "3.0.2",
+      "dependencies": [
+        "meta"
       ]
     },
     {

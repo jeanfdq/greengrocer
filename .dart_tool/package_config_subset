@@ -2,6 +2,10 @@ adaptive_dialog
 3.6
 file:///Users/jmanzini/.pub-cache/hosted/pub.dev/adaptive_dialog-2.4.1/
 file:///Users/jmanzini/.pub-cache/hosted/pub.dev/adaptive_dialog-2.4.1/lib/
+add_to_cart_animation
+3.4
+file:///Users/jmanzini/.pub-cache/hosted/pub.dev/add_to_cart_animation-2.0.4/
+file:///Users/jmanzini/.pub-cache/hosted/pub.dev/add_to_cart_animation-2.0.4/lib/
 animated_text_kit
 2.12
 file:///Users/jmanzini/.pub-cache/hosted/pub.dev/animated_text_kit-4.2.3/
@@ -122,6 +126,14 @@ plugin_platform_interface
 3.0
 file:///Users/jmanzini/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/
 file:///Users/jmanzini/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8/lib/
+qr
+3.4
+file:///Users/jmanzini/.pub-cache/hosted/pub.dev/qr-3.0.2/
+file:///Users/jmanzini/.pub-cache/hosted/pub.dev/qr-3.0.2/lib/
+qr_flutter
+2.19
+file:///Users/jmanzini/.pub-cache/hosted/pub.dev/qr_flutter-4.1.0/
+file:///Users/jmanzini/.pub-cache/hosted/pub.dev/qr_flutter-4.1.0/lib/
 source_span
 3.1
 file:///Users/jmanzini/.pub-cache/hosted/pub.dev/source_span-1.10.1/

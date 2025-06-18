@@ -5,6 +5,7 @@ import 'package:greengrocer/config/app_data.dart' as AppData;
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/cart_item_model.dart';
 import 'package:greengrocer/screens/components/cart_item_tale.dart';
+import 'package:greengrocer/screens/components/payment_dialog.dart';
 import 'package:greengrocer/utils/components/custom_button.dart';
 import 'package:greengrocer/utils/constants/constants.dart';
 import 'package:greengrocer/utils/utils.services.dart';
@@ -37,6 +38,8 @@ class _CartTabState extends State<CartTab> {
 
   @override
   Widget build(BuildContext context) {
+    final utilsServices = UtilsServices();
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -110,7 +113,17 @@ class _CartTabState extends State<CartTab> {
                   radius: KUtils.kRadiusDefault,
                   action: () async {
                     bool? result = await showOrderConfirmation();
-                    print(result);
+                    if (result ?? false) {
+                      showDialog(
+                        // ignore: use_build_context_synchronously
+                        context: context,
+                        builder: (_) {
+                          return PaymentDialog(
+                            order: utilsServices.makeOrder(AppData.cartItems),
+                          );
+                        },
+                      );
+                    }
                   },
                 ),
               ],

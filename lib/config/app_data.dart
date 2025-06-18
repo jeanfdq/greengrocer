@@ -3,8 +3,9 @@ import 'package:greengrocer/models/order_model.dart';
 import 'package:greengrocer/models/product_item_model.dart';
 import 'package:greengrocer/models/user_model.dart';
 import 'package:greengrocer/utils/utils.services.dart';
+import 'package:uuid/uuid.dart';
 
-final utilsServices = UtilsServices();
+final UtilsServices utilsServices = UtilsServices();
 
 ProductItemModel apple = ProductItemModel(
   name: "Maçã",
@@ -136,8 +137,34 @@ List<OrderModel> orders = [
       CartItemModel(item: apple, quantity: 2),
       CartItemModel(item: pimenta, quantity: 5),
     ],
+    status: "shipping",
+    pixCopyAndPaste: Uuid().v8g(),
+    total: 100,
+  ),
+
+  OrderModel(
+    id: utilsServices.getRandomNumber().toString(),
+    createdOrder: DateTime.now(),
+    pixOverDue: DateTime.parse("2025-07-01 10:00"),
+    items: [
+      CartItemModel(item: arroz, quantity: 5),
+      CartItemModel(item: kiwi, quantity: 3),
+    ],
+    status: "refunded",
+    pixCopyAndPaste: Uuid().v8g(),
+    total: 100,
+  ),
+
+  OrderModel(
+    id: utilsServices.getRandomNumber().toString(),
+    createdOrder: DateTime.now(),
+    pixOverDue: DateTime.parse("2025-02-01 10:00"),
+    items: [
+      CartItemModel(item: alface, quantity: 2),
+      CartItemModel(item: couveflor, quantity: 3),
+    ],
     status: "pending_payment",
-    pixCopyAndPaste: "pixCopyAndPaste",
+    pixCopyAndPaste: Uuid().v8g(),
     total: 100,
   ),
 ];

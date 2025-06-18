@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
+import 'package:greengrocer/models/cart_item_model.dart';
+import 'package:greengrocer/models/order_model.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -35,5 +37,23 @@ class UtilsServices {
     initializeDateFormatting();
     DateFormat dateFormat = DateFormat.yMd('pt_BR').add_Hm();
     return dateFormat.format(dateTime);
+  }
+
+  OrderModel makeOrder(List<CartItemModel> items) {
+    double total = 0;
+
+    for (var element in items) {
+      total += element.totalPrice();
+    }
+
+    return OrderModel(
+      id: getRandomNumber().toString(),
+      createdOrder: DateTime.now(),
+      pixOverDue: DateTime.parse("2026-12-01 14:00"),
+      items: items,
+      status: "pending_payment",
+      pixCopyAndPaste: Uuid().v8g(),
+      total: total,
+    );
   }
 }
