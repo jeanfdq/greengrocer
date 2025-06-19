@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/config/app_data.dart' as AppData;
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/screens/components/category_tale.dart';
+import 'package:greengrocer/screens/components/custom_shimmer.dart';
 import 'package:greengrocer/screens/components/product_item_tale.dart';
 import 'package:greengrocer/screens/product_screen.dart';
+import 'package:greengrocer/utils/constants/constants.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -23,6 +25,19 @@ class _HomeTabState extends State<HomeTab> {
 
   void itemSelectedCartAnimation(GlobalKey gkImage) {
     runAddToCartAnimation(gkImage);
+  }
+
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      Duration(seconds: 4),
+      () => setState(() {
+        isLoading = false;
+      }),
+    );
   }
 
   @override
@@ -136,35 +151,56 @@ class _HomeTabState extends State<HomeTab> {
 
             // List GridView
             Expanded(
-              child: GridView.builder(
-                physics: BouncingScrollPhysics(),
-                padding: EdgeInsets.fromLTRB(15, 5, 15, 15),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 9 / 11.5,
-                ),
-                itemCount: AppData.items.length,
-                itemBuilder: (_, index) {
-                  return ProductItemTale(
-                    productItem: AppData.items[index],
-                    // cartAnimationMethod: itemSelectedCartAnimation,
-                    onTapCart: itemSelectedCartAnimation,
-                    onTapProduct: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ProductScreen(
-                              productItem: AppData.items[index],
+              child: isLoading
+                  ? GridView.count(
+                      crossAxisCount: 2,
+                      physics: BouncingScrollPhysics(),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 15),
+
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: 9 / 11.5,
+                      children: List.generate(
+                        10,
+                        (index) => CustomShimmer(
+                          height: double.infinity,
+                          width: double.infinity,
+                          borderRadius: BorderRadius.circular(
+                            KUtils.kRadiusDefault,
+                          ),
+                        ),
+                      ),
+                    )
+                  : GridView.builder(
+                      physics: BouncingScrollPhysics(),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 15),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            childAspectRatio: 9 / 11.5,
+                          ),
+                      itemCount: AppData.items.length,
+                      itemBuilder: (_, index) {
+                        return ProductItemTale(
+                          productItem: AppData.items[index],
+                          // cartAnimationMethod: itemSelectedCartAnimation,
+                          onTapCart: itemSelectedCartAnimation,
+                          onTapProduct: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ProductScreen(
+                                    productItem: AppData.items[index],
+                                  );
+                                },
+                              ),
                             );
                           },
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
+                        );
+                      },
+                    ),
             ),
           ],
         ),

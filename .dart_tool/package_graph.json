@@ -16,6 +16,7 @@
         "intl",
         "mask_text_input_formatter",
         "qr_flutter",
+        "shimmer",
         "uuid"
       ],
       "devDependencies": [
@@ -70,6 +71,13 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "shimmer",
+      "version": "3.0.0",
+      "dependencies": [
+        "flutter"
       ]
     },
     {
