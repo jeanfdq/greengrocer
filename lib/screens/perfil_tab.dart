@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:greengrocer/config/app_data.dart' as AppData;
 import 'package:greengrocer/screens/sign_in_screen.dart';
 import 'package:greengrocer/utils/components/custom_button.dart';
@@ -104,7 +105,17 @@ class _PerfilTabState extends State<PerfilTab> {
                   radius: KUtils.kRadiusDefault,
                   action: () async {
                     bool? result = await updatePasswordDialog();
-                    print(result);
+                    if (result ?? false) {
+                      Fluttertoast.showToast(
+                        msg: "This is a Short Toast",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                    }
                   },
                 ),
               ],

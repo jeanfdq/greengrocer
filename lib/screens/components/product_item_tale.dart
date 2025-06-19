@@ -3,7 +3,7 @@ import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/product_item_model.dart';
 import 'package:greengrocer/utils/utils.services.dart';
 
-class ProductItemTale extends StatelessWidget {
+class ProductItemTale extends StatefulWidget {
   const ProductItemTale({
     super.key,
     required this.productItem,
@@ -12,15 +12,30 @@ class ProductItemTale extends StatelessWidget {
   });
 
   final ProductItemModel productItem;
-  final VoidCallback onTapCart;
+  final void Function(GlobalKey) onTapCart;
   final VoidCallback onTapProduct;
+
+  @override
+  State<ProductItemTale> createState() => _ProductItemTaleState();
+}
+
+class _ProductItemTaleState extends State<ProductItemTale> {
+  final GlobalKey gkImagem = GlobalKey();
+
+  IconData tileIcon = Icons.add_shopping_cart_outlined;
+
+  Future<void> switchTileIcon() async {
+    setState(() => tileIcon = Icons.check);
+    await Future.delayed(Duration(seconds: 2));
+    setState(() => tileIcon = Icons.add_shopping_cart_outlined);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         GestureDetector(
-          onTap: onTapProduct,
+          onTap: widget.onTapProduct,
           child: Card(
             elevation: 1,
             shadowColor: Colors.blueGrey,
@@ -34,12 +49,16 @@ class ProductItemTale extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Hero(
-                      tag: productItem.imageURL.trim(),
-                      child: Image.asset(productItem.imageURL),
+                      tag: widget.productItem.imageURL.trim(),
+                      child: Container(
+                        key: gkImagem,
+
+                        child: Image.asset(widget.productItem.imageURL),
+                      ),
                     ),
                   ),
                   Text(
-                    productItem.name,
+                    widget.productItem.name,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
                   ),
                   Text.rich(
@@ -47,7 +66,7 @@ class ProductItemTale extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: UtilsServices().priceToCurrency(
-                            productItem.price,
+                            widget.productItem.price,
                           ),
                           style: TextStyle(
                             color: CustomColors.customSwatchColor,
@@ -56,7 +75,7 @@ class ProductItemTale extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: ' / ${productItem.unit}',
+                          text: ' / ${widget.productItem.unit}',
                           style: TextStyle(
                             color: Colors.blueGrey.shade400,
                             fontSize: 16,
@@ -77,7 +96,10 @@ class ProductItemTale extends StatelessWidget {
           top: 4,
           right: 4,
           child: GestureDetector(
-            onTap: onTapCart,
+            onTap: () {
+              widget.onTapCart(gkImagem);
+              switchTileIcon();
+            },
             child: Container(
               width: 35,
               height: 40,
@@ -88,11 +110,7 @@ class ProductItemTale extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: Icon(
-                Icons.add_shopping_cart_outlined,
-                color: Colors.white,
-                size: 26,
-              ),
+              child: Icon(tileIcon, color: Colors.white, size: 26),
             ),
           ),
         ),
