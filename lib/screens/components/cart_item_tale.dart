@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/GetX/values_controller.dart';
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/cart_item_model.dart';
 import 'package:greengrocer/screens/components/product_quantity.dart';
@@ -21,6 +22,8 @@ class CartItemTile extends StatefulWidget {
 }
 
 class _CartItemTileState extends State<CartItemTile> {
+  final valuesController = ValuesController();
+
   final utilsServices = UtilsServices();
 
   @override

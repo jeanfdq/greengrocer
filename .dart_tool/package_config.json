@@ -164,6 +164,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "get",
+      "rootUri": "file:///Users/jmanzini/.pub-cache/hosted/pub.dev/get-4.7.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "gradient_borders",
       "rootUri": "file:///Users/jmanzini/.pub-cache/hosted/pub.dev/gradient_borders-1.0.1",
       "packageUri": "lib/",

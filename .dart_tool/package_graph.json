@@ -13,6 +13,7 @@
         "cupertino_icons",
         "flutter",
         "fluttertoast",
+        "get",
         "intl",
         "mask_text_input_formatter",
         "qr_flutter",
@@ -71,6 +72,14 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "get",
+      "version": "4.7.2",
+      "dependencies": [
+        "flutter",
+        "web"
       ]
     },
     {
