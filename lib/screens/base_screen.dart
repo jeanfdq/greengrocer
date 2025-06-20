@@ -21,45 +21,40 @@ class BaseScreen extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         children: [HomeTab(), CartTab(), OrdersTab(), PerfilTab()],
       ),
-      bottomNavigationBar: GetBuilder<ValuesController>(
-        init: valuesController,
+      bottomNavigationBar: Obx(() {
+        return BottomNavigationBar(
+          currentIndex: valuesController.homePageIndex.value,
+          onTap: (index) {
+            valuesController.setValue(index);
 
-        builder: (ctrl) {
-          return BottomNavigationBar(
-            currentIndex: ctrl.homePageIndex,
-            onTap: (index) {
-              valuesController.setValue(index);
-              ctrl.homePageIndex = index;
+            pageController.animateToPage(
+              index,
+              duration: Duration(microseconds: 500),
+              curve: Curves.fastEaseInToSlowEaseOut,
+            );
+          },
 
-              pageController.animateToPage(
-                index,
-                duration: Duration(microseconds: 700),
-                curve: Curves.fastEaseInToSlowEaseOut,
-              );
-            },
-
-            backgroundColor: Colors.green,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white.withAlpha(90),
-            type: BottomNavigationBarType.fixed,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined),
-                label: "Carrinho",
-              ),
-              BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pedidos"),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_2_outlined),
-                label: "Perfil",
-              ),
-            ],
-          );
-        },
-      ),
+          backgroundColor: Colors.green,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withAlpha(90),
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart_outlined),
+              label: "Carrinho",
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pedidos"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_2_outlined),
+              label: "Perfil",
+            ),
+          ],
+        );
+      }),
     );
   }
 }

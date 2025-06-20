@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/order_model.dart';
 import 'package:greengrocer/utils/components/custom_button.dart';
@@ -82,7 +83,7 @@ class PaymentDialog extends StatelessWidget {
             top: 0,
             right: 0,
             child: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Get.back(),
               icon: Icon(Icons.close),
             ),
           ),

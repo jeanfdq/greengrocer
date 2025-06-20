@@ -15,6 +15,17 @@ class ProductItemModel {
     required this.price,
   });
 
+  /// Retorna uma instância vazia do model
+  static ProductItemModel empty() {
+    return ProductItemModel(
+      name: '',
+      imageURL: '',
+      unit: '',
+      descript: '',
+      price: 0.0,
+    );
+  }
+
   ProductItemModel copyWith({
     String? name,
     String? imageURL,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/utils/components/custom_button.dart';
 
@@ -28,7 +29,7 @@ class SignUpScreen extends StatelessWidget {
                   child: IconButton(
                     iconSize: 32,
                     color: Colors.white,
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Get.back(),
                     icon: Icon(Icons.arrow_back_ios),
                   ),
                 ),
@@ -111,6 +112,7 @@ class SignUpScreen extends StatelessWidget {
                           ],
                         ),
 
+                        // Botão de cadastro
                         CustomButton(
                           buttonHeight: KUtils.kHeightButton,
                           backgroud: Colors.green,

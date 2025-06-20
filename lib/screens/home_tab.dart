@@ -1,12 +1,14 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // ignore: library_prefixes
 import 'package:greengrocer/config/app_data.dart' as AppData;
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/screens/components/category_tale.dart';
 import 'package:greengrocer/screens/components/custom_shimmer.dart';
 import 'package:greengrocer/screens/components/product_item_tale.dart';
-import 'package:greengrocer/screens/product_screen.dart';
+import 'package:greengrocer/screens/pages_routes/pages_routes.dart';
+
 import 'package:greengrocer/utils/constants/constants.dart';
 
 class HomeTab extends StatefulWidget {
@@ -73,7 +75,7 @@ class _HomeTabState extends State<HomeTab> {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
-              onTap: () => debugPrint('Carrinho 1'),
+              onTap: () => Get.toNamed(PagesRoutes.cartTabRoute),
               child: AddToCartIcon(
                 key: globalKeyCartItems,
                 badgeOptions: const BadgeOptions(
@@ -187,17 +189,10 @@ class _HomeTabState extends State<HomeTab> {
                           productItem: AppData.items[index],
                           // cartAnimationMethod: itemSelectedCartAnimation,
                           onTapCart: itemSelectedCartAnimation,
-                          onTapProduct: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return ProductScreen(
-                                    productItem: AppData.items[index],
-                                  );
-                                },
-                              ),
-                            );
-                          },
+                          onTapProduct: () => Get.toNamed(
+                            PagesRoutes.productRoute,
+                            arguments: AppData.items[index],
+                          ),
                         );
                       },
                     ),

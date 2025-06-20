@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
+
 import 'package:greengrocer/GetX/values_controller.dart';
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/cart_item_model.dart';
 import 'package:greengrocer/screens/components/product_quantity.dart';
 import 'package:greengrocer/utils/utils.services.dart';
 
-class CartItemTile extends StatefulWidget {
+class CartItemTile extends StatelessWidget {
+  final valuesController = ValuesController();
+  final utilsServices = UtilsServices();
+
   final CartItemModel cartItem;
   final Function(double totalItem) totalItem;
   final VoidCallback removeItem;
 
-  const CartItemTile({
+  CartItemTile({
     super.key,
     required this.cartItem,
     required this.removeItem,
     required this.totalItem,
   });
-
-  @override
-  State<CartItemTile> createState() => _CartItemTileState();
-}
-
-class _CartItemTileState extends State<CartItemTile> {
-  final valuesController = ValuesController();
-
-  final utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +29,17 @@ class _CartItemTileState extends State<CartItemTile> {
         minTileHeight: 90,
 
         // Imagem do Produto
-        leading: Image.asset(widget.cartItem.item.imageURL, fit: BoxFit.fill),
+        leading: Image.asset(cartItem.item.imageURL, fit: BoxFit.fill),
 
         // Titulo
         title: Text(
-          widget.cartItem.item.name,
+          cartItem.item.name,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
 
         // Total
         subtitle: Text(
-          utilsServices.priceToCurrency(widget.cartItem.totalPrice()),
+          utilsServices.priceToCurrency(cartItem.totalPrice()),
           style: TextStyle(
             color: CustomColors.customSwatchColor,
             fontWeight: FontWeight.w700,
@@ -54,18 +49,15 @@ class _CartItemTileState extends State<CartItemTile> {
 
         // Quatidade
         trailing: ProductQuantity(
-          suffixText: widget.cartItem.item.unit,
-          value: widget.cartItem.quantity,
+          suffixText: cartItem.item.unit,
+          value: cartItem.quantity,
           isRemovable: true,
           resultQuantity: (quantity) {
-            setState(() {
-              widget.cartItem.quantity = quantity;
-              widget.totalItem(widget.cartItem.totalPrice());
+            totalItem(cartItem.totalPrice());
 
-              if (quantity == 0) {
-                widget.removeItem();
-              }
-            });
+            if (quantity == 0) {
+              removeItem();
+            }
           },
         ),
       ),

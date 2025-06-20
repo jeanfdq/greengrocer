@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/product_item_model.dart';
 import 'package:greengrocer/utils/utils.services.dart';
@@ -98,7 +99,6 @@ class _ProductItemTaleState extends State<ProductItemTale> {
           child: GestureDetector(
             onTap: () {
               widget.onTapCart(gkImagem);
-              switchTileIcon();
             },
             child: Container(
               width: 35,
@@ -110,7 +110,12 @@ class _ProductItemTaleState extends State<ProductItemTale> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: Icon(tileIcon, color: Colors.white, size: 26),
+              child: Icon(
+                Icons.add_shopping_cart_outlined,
+
+                color: Colors.white,
+                size: 26,
+              ),
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer/config/app_data.dart' as AppData;
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/cart_item_model.dart';
@@ -91,7 +92,7 @@ class _CartTabState extends State<CartTab> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("Total geral:"),
+                Text("Total geral:", style: TextStyle(fontSize: 19)),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 6),
                   child: Text(
@@ -105,26 +106,29 @@ class _CartTabState extends State<CartTab> {
                 ),
 
                 // Button concluir compra
-                CustomButton(
-                  buttonHeight: KUtils.kHeightButton,
-                  backgroud: CustomColors.customSwatchColor,
-                  label: "Concluir Pedido",
-                  labelColor: Colors.white,
-                  radius: KUtils.kRadiusDefault,
-                  action: () async {
-                    bool? result = await showOrderConfirmation();
-                    if (result ?? false) {
-                      showDialog(
-                        // ignore: use_build_context_synchronously
-                        context: context,
-                        builder: (_) {
-                          return PaymentDialog(
-                            order: utilsServices.makeOrder(AppData.cartItems),
-                          );
-                        },
-                      );
-                    }
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 22),
+                  child: CustomButton(
+                    buttonHeight: KUtils.kHeightButton,
+                    backgroud: CustomColors.customSwatchColor,
+                    label: "Concluir Pedido",
+                    labelColor: Colors.white,
+                    radius: KUtils.kRadiusDefault,
+                    action: () async {
+                      bool? result = await showOrderConfirmation();
+                      if (result ?? false) {
+                        showDialog(
+                          // ignore: use_build_context_synchronously
+                          context: context,
+                          builder: (_) {
+                            return PaymentDialog(
+                              order: utilsServices.makeOrder(AppData.cartItems),
+                            );
+                          },
+                        );
+                      }
+                    },
+                  ),
                 ),
               ],
             ),
@@ -147,7 +151,7 @@ class _CartTabState extends State<CartTab> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
+              onPressed: () => Get.back(result: false),
 
               child: Text(
                 "Não",
@@ -157,8 +161,9 @@ class _CartTabState extends State<CartTab> {
                 ),
               ),
             ),
+
             ElevatedButton(
-              onPressed: () => Navigator.of(context).pop(true),
+              onPressed: () => Get.back(result: true),
               child: Text(
                 "Sim",
                 style: TextStyle(

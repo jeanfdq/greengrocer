@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer/config/custom_colors.dart';
 import 'package:greengrocer/models/product_item_model.dart';
 import 'package:greengrocer/screens/components/product_quantity.dart';
@@ -7,9 +8,9 @@ import 'package:greengrocer/utils/constants/constants.dart';
 import 'package:greengrocer/utils/utils.services.dart';
 
 class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key, required this.productItem});
+  ProductScreen({super.key});
 
-  final ProductItemModel productItem;
+  final ProductItemModel productItem = Get.arguments;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -116,7 +117,7 @@ class _ProductScreenState extends State<ProductScreen> {
             child: SafeArea(
               child: GestureDetector(
                 child: Icon(Icons.arrow_back_ios, size: 32),
-                onTap: () => Navigator.of(context).pop(),
+                onTap: () => Get.back(),
               ),
             ),
           ),

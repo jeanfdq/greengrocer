@@ -1,7 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:greengrocer/screens/base_screen.dart';
-import 'package:greengrocer/screens/sign_up_screen.dart';
+import 'package:get/get.dart';
+
+import 'package:greengrocer/screens/pages_routes/pages_routes.dart';
+
 import 'package:greengrocer/utils/components/custom_button.dart';
 import 'package:greengrocer/utils/components/custom_text_field.dart';
 import 'package:greengrocer/config/custom_colors.dart';
@@ -106,15 +108,8 @@ class SignInScreen extends StatelessWidget {
                       label: "Login",
                       labelColor: Colors.white,
                       radius: KUtils.kRadiusDefault,
-                      action: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return BaseScreen();
-                            },
-                          ),
-                        );
-                      },
+                      //getOff é o mesmo que pushReplacement
+                      action: () => Get.offNamed(PagesRoutes.baseRoute),
                     ),
 
                     // Esqueci minha senha
@@ -157,15 +152,7 @@ class SignInScreen extends StatelessWidget {
                       borderWidth: 1.5,
                       borderColor: Colors.green,
                       radius: KUtils.kRadiusDefault,
-                      action: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return SignUpScreen();
-                            },
-                          ),
-                        );
-                      },
+                      action: () => Get.toNamed(PagesRoutes.signUpRoute),
                     ),
                   ],
                 ),

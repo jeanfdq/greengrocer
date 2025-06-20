@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
 
 class ValuesController extends GetxController {
-  int homePageIndex = 0;
+  RxInt homePageIndex = 0.obs;
 
-  void setValue(int value) {
-    homePageIndex = value;
-
-    update();
+  void setValue(int newValue) {
+    homePageIndex.value = newValue;
   }
 }

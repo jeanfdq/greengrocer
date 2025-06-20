@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:greengrocer/config/app_data.dart' as AppData;
+import 'package:greengrocer/screens/pages_routes/pages_routes.dart';
 import 'package:greengrocer/screens/sign_in_screen.dart';
 import 'package:greengrocer/utils/components/custom_button.dart';
 import 'package:greengrocer/utils/components/custom_text_field.dart';
@@ -33,9 +35,7 @@ class _PerfilTabState extends State<PerfilTab> {
         backgroundColor: Colors.green,
         actions: [
           IconButton(
-            onPressed: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => SignInScreen()),
-            ),
+            onPressed: () => Get.offNamed(PagesRoutes.signInRoute),
             icon: Icon(Icons.logout, color: Colors.white, size: 28),
           ),
         ],
@@ -188,7 +188,7 @@ class _PerfilTabState extends State<PerfilTab> {
                       label: "Atualizar senha",
                       labelColor: Colors.white,
                       radius: KUtils.kRadiusDefault,
-                      action: () => Navigator.of(context).pop(true),
+                      action: () => Get.back(result: true),
                     ),
                   ],
                 ),
@@ -200,9 +200,7 @@ class _PerfilTabState extends State<PerfilTab> {
                 right: 5,
                 child: IconButton(
                   iconSize: 24,
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
+                  onPressed: () => Get.back(result: false),
                   icon: Icon(Icons.close),
                 ),
               ),
